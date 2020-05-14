@@ -1,0 +1,40 @@
+#!/bin/sh
+
+PY_FILES="fieldclass.py  __main__.py  other.py  piececlass.py  tetmacros.py"
+PY_DEPS="sox googletrans google_speech"
+NAME="textris"
+INSTALL_DIR="/usr/local/bin/"
+
+
+clean()
+{
+	echo "Cleaning"
+	rm $NAME".zip"
+}
+install()
+{
+	echo "Installing."
+	mv $NAME $INSTALL_DIR || echo "Installation failed. Try running as root."
+}
+
+
+echo "Creating binary"
+zip $NAME $PY_FILES  || echo "Zipping files failed"
+echo '#!/usr/bin/env python3' > $NAME
+cat $NAME".zip" >> $NAME
+chmod +xr $NAME
+
+
+
+
+while getopts "ci" o; do
+	case "${o}" in
+		c)
+			clean
+			;;
+		i)
+			install
+			;;
+	esac
+done
+
