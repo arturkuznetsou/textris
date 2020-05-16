@@ -4,7 +4,7 @@ from fieldclass import field
 from tetmacros import speed, linesNextLevel, calcScore
 
 SHOW_NEXT = True
-START_LEVEL = 0
+START_LEVEL = 5
 
 
 
@@ -98,12 +98,8 @@ def gameFunc():
     fld.drawNext(score, level)
 
     while not fld.collision:
-        scr.addstr(0, 0, "          ")
-        scr.addstr(0, 0, str(spd))
-        scr.addstr(1, 0, str(linesNext))
         frames += 1
         startTime = time.time()
-        #scr.addstr(1, 0, str(scr.getch()))
 
 
         if frames % spd == 0:
