@@ -24,8 +24,6 @@ for arg, value in args:
         if int(value) < 60:
             sys.exit('Framerate has to be equal to or greater than 60.')
         FPS = int(value)
-    elif arg == '-x':
-        SHOW_NEXT = False
     elif arg == '-h':
         other.printHelpMsg()
         sys.exit(1)
