@@ -55,6 +55,7 @@ def checkLines():
             spd = int(speed(level) * FPS/60)
             linesNext = linesNextLevel(level) + linesNext
         fld.drawField()
+    fld.drawNext(score, level)
 
 
 def keyPress(delay, scrn):
@@ -104,7 +105,6 @@ def gameFunc():
             framesToSleep = 10 + fld.p.y / 2
             if fld.moveDown():
                 checkLines()
-                fld.drawNext(score, level)
                 scr.refresh()
 
         time.sleep(max(1./FPS - (time.time() - startTime), 0))
